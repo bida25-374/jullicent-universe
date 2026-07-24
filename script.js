@@ -53,7 +53,7 @@ function updateCountdown() {
     if (!daysLeft) return;
 
     // Meeting Date (1 August 2026)
-    const meetingDate = new Date(2026, 6, 23, 0, 0, 0);
+    const meetingDate = new Date(2026, 7, 23, 0, 0, 0);
 
     // Current Date
     const now = new Date();
