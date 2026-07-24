@@ -4,8 +4,8 @@ console.log("JavaScript connected!");
 // HOME PAGE ❤️
 // ===============================
 
-// Together Since
-const relationshipStartDate = new Date("2026-03-12");
+// Relationship Start Date
+const relationshipStartDate = new Date("2026-03-14");
 
 function updateCounter() {
 
@@ -26,7 +26,10 @@ function updateCounter() {
 updateCounter();
 
 
-// Live Clock
+// ===============================
+// LIVE CLOCK 🕒
+// ===============================
+
 function updateClock() {
 
     const clock = document.getElementById("clock");
@@ -41,94 +44,48 @@ updateClock();
 
 setInterval(updateClock, 1000);
 
+
 // ===============================
 // COUNTDOWN PAGE ❤️
 // ===============================
 
 function updateCountdown() {
 
-    // Only run on countdown.html
     const daysLeft = document.getElementById("daysLeft");
 
+    // Only run on countdown.html
     if (!daysLeft) return;
 
-    // Meeting Date (1 August 2026)
-    const meetingDate = new Date(2026, 7, 23, 0, 0, 0);
+    // Countdown permanently finished
+    document.getElementById("daysLeft").textContent = "0";
+    document.getElementById("hoursLeft").textContent = "0";
+    document.getElementById("minutesLeft").textContent = "0";
+    document.getElementById("secondsLeft").textContent = "0";
 
-    // Current Date
-    const now = new Date();
+    // Message
+    const progressText = document.getElementById("progressText");
 
-    // Time Difference
-    const difference = meetingDate.getTime() - now.getTime();
+    if (progressText) {
 
-    // If meeting day has arrived
-    if (difference <= 0) {
+        progressText.innerHTML =
+            "❤️ We finally met on <strong>23 July 2026</strong>!<br><br>" +
+            "The countdown is over, but our journey together has only just begun. ❤️";
 
-        document.getElementById("daysLeft").textContent = "0";
-        document.getElementById("hoursLeft").textContent = "0";
-        document.getElementById("minutesLeft").textContent = "0";
-        document.getElementById("secondsLeft").textContent = "0";
-
-        const progressText = document.getElementById("progressText");
-
-        if (progressText) {
-            progressText.textContent = "🎉 Today is finally here! ❤️";
-        }
-
-        return;
     }
 
-    // Calculate Time
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    // Stop the heart at the end of the road
+    const heart = document.getElementById("heart");
 
-    const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
+    if (heart) {
 
-    const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
+        heart.style.left = "100%";
 
-    const seconds = Math.floor(
-        (difference % (1000 * 60)) /
-        1000
-    );
+    }
 
-    // Display Time
-    document.getElementById("daysLeft").textContent = days;
-    document.getElementById("hoursLeft").textContent = hours;
-    document.getElementById("minutesLeft").textContent = minutes;
-    document.getElementById("secondsLeft").textContent = seconds;
-// ===============================
-// HEART JOURNEY ❤️
-// ===============================
-
-// Journey starts on 7 July 2026
-const journeyStart = new Date(2026, 6, 7, 0, 0, 0);
-
-const totalJourney = meetingDate.getTime() - journeyStart.getTime();
-const completedJourney = now.getTime() - journeyStart.getTime();
-
-let progress = (completedJourney / totalJourney) * 100;
-
-// Keep progress between 0% and 100%
-if (progress < 0) progress = 0;
-if (progress > 100) progress = 100;
-
-const heart = document.getElementById("heart");
-
-if (heart) {
-    heart.style.left = progress + "%";
-}
 }
 
-// Start Countdown
 updateCountdown();
 
-// Update Every Second
-setInterval(updateCountdown, 1000);
 
 // ===============================
 // LETTERS PAGE ❤️
@@ -155,7 +112,7 @@ function toggleLetter(letterId) {
 
 }
 
-// Hide all letters when the page loads
+// Hide all letters when page loads
 document.addEventListener("DOMContentLoaded", function () {
 
     const letters = document.querySelectorAll(".letter-content");
@@ -167,3 +124,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
