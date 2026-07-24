@@ -1,4 +1,5 @@
-console.log("JavaScript connected!");
+console.log("THIS IS MY NEW SCRIPT");
+alert("New script loaded!");
 
 // ===============================
 // HOME PAGE ❤️
